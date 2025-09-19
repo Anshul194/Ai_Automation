@@ -1,0 +1,4 @@
+Event,Name,Phone,Email,TicketType,TotalTicket,Zone,ClassId,Remarks
+Kesariya 3.0,John Doe,9876543210,john@example.com,Khelaiya,2,A,101,First booking
+Kesariya 3.5,Jane Smith,9123456789,jane@example.com,Khelaiya,1,B,102,Second booking
+Kesariya 3.0,Sam Patel,9988776655,sam@example.com,Khelaiya,3,C,103,Third booking
