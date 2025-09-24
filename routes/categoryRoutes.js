@@ -22,7 +22,7 @@ categoryRouter.get('/active', getActiveCategories);
 categoryRouter.get('/search', searchCategories);
 categoryRouter.get(
   '/',
-  checkOriginForAdmin,
+  // checkOriginForAdmin,
   getAllCategories
 );
 

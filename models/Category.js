@@ -18,6 +18,11 @@ const categorySchema = new mongoose.Schema(
       trim: true,
       match: /^#[0-9A-Fa-f]{6}$/, // Validates hex color code like #8B5CF6
     },
+    status: {
+      type: String,
+      enum: ['active', 'inactive'],
+      default: 'active',
+    },
   },
   {
     timestamps: true, // adds createdAt and updatedAt

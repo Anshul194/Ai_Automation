@@ -22,7 +22,6 @@ locationRouter.get('/active', getActiveLocations);
 locationRouter.get('/search', searchLocations);
 locationRouter.get(
   '/',
-  checkOriginForAdmin,
   getAllLocations
 );
 locationRouter.get('/:locationId', getLocationById);

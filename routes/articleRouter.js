@@ -23,7 +23,6 @@ articleRouter.get('/published', getPublishedArticles);
 articleRouter.get('/search', searchArticles);
 articleRouter.get(
   '/',
-  checkOriginForAdmin,
   getAllArticles
 );
 articleRouter.get('/:articleId', getArticleById);

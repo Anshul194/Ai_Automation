@@ -22,7 +22,8 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 
 const corsOptions = {
-  origin: '*',
+  // origin: '*',
+  origin: 'http://localhost:5173',
   credentials: true,
   optionsSuccessStatus: 200,
 };
