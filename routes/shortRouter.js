@@ -20,7 +20,7 @@ const shortRouter = express.Router();
 shortRouter.get('/search', searchShorts);
 shortRouter.get(
   '/',
-  checkOriginForAdmin,
+
   getAllShorts
 );
 shortRouter.get('/:shortId', getShortById);

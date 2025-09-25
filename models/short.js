@@ -25,6 +25,12 @@ const shortSchema = new mongoose.Schema(
       ref: 'Category',
       required: true,
     },
+    tags: [
+      {
+        type: String,
+        trim: true,
+      },
+    ],
     relatedLinks: [{
       url: {
         type: String,
@@ -37,6 +43,7 @@ const shortSchema = new mongoose.Schema(
         default: '', // Optional, defaults to empty string if not provided
       },
     }],
+
   },
   {
     timestamps: true,

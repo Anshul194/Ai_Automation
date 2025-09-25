@@ -6,7 +6,7 @@ class ShortService {
     this.shortRepository = new ShortRepository();
   }
 
-  async createShort({ title, videoImage, thumbnailImage, description, category, relatedLinks = [] }) {
+  async createShort({ title, videoImage, thumbnailImage, description, category, relatedLinks = [],tags = [] }) {
     try {
       // Log all inputs for debugging
       console.log('createShort inputs:', {
@@ -65,6 +65,7 @@ class ShortService {
           url: link.url.trim(),
           linkTitle: link.linkTitle ? link.linkTitle.trim() : '',
         })),
+        tags: tags.map(t => t.trim()),
       });
     } catch (error) {
       console.error('❌ Error in createShort:', error);
@@ -104,7 +105,7 @@ class ShortService {
 
   async updateShort(id, updateData) {
     try {
-      const { title, description, category, relatedLinks = [] } = updateData;
+      const { title, description, category, relatedLinks = [], tags = [] } = updateData;
       const videoImage = updateData.videoImage || undefined;
       const thumbnailImage = updateData.thumbnailImage || undefined;
       const updateDataFinal = { title, description, category, relatedLinks };
@@ -138,6 +139,14 @@ class ShortService {
           linkTitle: link.linkTitle ? link.linkTitle.trim() : '',
         }));
       }
+
+      if (tags && Array.isArray(tags)) {
+      const invalidTags = tags.filter((tag) => typeof tag !== 'string' || tag.trim() === '');
+      if (invalidTags.length > 0) {
+        throw new Error('Invalid tags: Each tag must be a non-empty string');
+      }
+      updateDataFinal.tags = tags.map((tag) => tag.trim());
+    }
 
       if (category) {
         const categoryDoc = await Category.findById(category);

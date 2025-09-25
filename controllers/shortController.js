@@ -6,7 +6,7 @@ const shortService = new ShortService();
 
 export const createShort = async (req, res) => {
   try {
-    const { title, description, category, relatedLinks = [] } = req.body;
+    const { title, description, category, relatedLinks = [],tags = [] } = req.body;
     const videoImage = req.files['videoImage'] ? req.files['videoImage'][0].filename : null;
     const thumbnailImage = req.files['thumbnailImage'] ? req.files['thumbnailImage'][0].filename : null;
 
@@ -74,6 +74,7 @@ export const createShort = async (req, res) => {
       thumbnailImage,
       description,
       category,
+      tags: tagsArray,
       relatedLinks: relatedLinks.map(link => ({
         url: link.url.trim(),
         linkTitle: link.linkTitle ? link.linkTitle.trim() : '',
@@ -165,14 +166,23 @@ export const getShortById = async (req, res) => {
 export const updateShort = async (req, res) => {
   try {
     const { shortId } = req.params;
-    const { title, description, category, relatedLinks = [] } = req.body;
+    const { title, description, category, relatedLinks = [], tags = [] } = req.body;
     const videoImage = req.files['videoImage'] ? req.files['videoImage'][0].filename : undefined;
     const thumbnailImage = req.files['thumbnailImage'] ? req.files['thumbnailImage'][0].filename : undefined;
+
+    // ✅ tags normalize
+    const tagsArray = Array.isArray(tags)
+      ? tags.map(t => t.trim())
+      : typeof tags === 'string'
+        ? tags.split(',').map(t => t.trim())
+        : [];
+
     const updateData = {
       title,
       description,
       category,
       relatedLinks,
+       tags: tagsArray,
     };
     if (videoImage) updateData.videoImage = videoImage;
     if (thumbnailImage) updateData.thumbnailImage = thumbnailImage;
