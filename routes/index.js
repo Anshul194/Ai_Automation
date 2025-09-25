@@ -10,6 +10,7 @@ import bannerRoutes from './bannerRoutes.js';
 import locationRouter from './locationRouter.js';
 import articleRouter from './articleRouter.js';
 import shortRouter from './shortRouter.js';
+import ePaperRouter from './ePaperRouter.js';
 
 
 
@@ -34,6 +35,7 @@ router.use('/banners', bannerRoutes);
 router.use('/locations', locationRouter);
 router.use('/articles', articleRouter);
 router.use('/shorts', shortRouter);
+router.use('/epapers', ePaperRouter);
 
 
 

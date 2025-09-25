@@ -12,8 +12,6 @@ import {
 import accessTokenAutoRefresh from '../middlewares/accessTokenAutoRefresh.js';
 import passport from 'passport';
 import { isAdmin } from '../middlewares/roleMiddleware.js';
-import checkPermission from '../middlewares/checkPermission.js';
-import checkOriginForAdmin from '../middlewares/checkOriginForAdmin.js';
 import { upload } from '../middlewares/upload-middleware.js';
 
 const articleRouter = express.Router();

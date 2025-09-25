@@ -118,7 +118,7 @@ export const requestOtp = async (req, res) => {
   // Note: In production, use a more secure method to generate OTPs
   const otp = Math.floor(100000 + Math.random() * 900000).toString();
 
-  if (phone == '7014628523' || phone == '8347496266' || phone == '7016292085' || phone == '7774010984' || phone == '6354822602'){
+  if (phone == '7014628523' || phone == '8347496266' || phone == '7016292085' || phone == '7774010984' || phone == '6354822602'|| phone == '7774010984'){
 
     const otp = '123456';
 
